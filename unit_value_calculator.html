@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Army Value Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .calculator {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+        .calculator div {
+            margin-bottom: 10px;
+        }
+        .calculator label {
+            margin-right: 10px;
+        }
+        .total-cost {
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <h1>Army Value Calculator</h1>
+        <div>
+            <label for="unit">Unit:</label>
+            <select id="unit">
+                <option value="100" data-save="4">Human (100 gold, Save: 4)</option>
+                <option value="150" data-save="4">Elf (150 gold, Save: 4)</option>
+                <option value="250" data-save="3">Dwarf (250 gold, Save: 3)</option>
+                <option value="150" data-save="4">Orc (150 gold, Save: 4)</option>
+                <option value="80" data-save="5">Goblin (80 gold, Save: 5)</option>
+            </select>
+        </div>
+        <div>
+            <label>Melee Training Quality:</label>
+            <select id="melee-training">
+                <option value="0">Regular (0)</option>
+                <option value="-3">Penal (-3)</option>
+                <option value="-2">Peasant (-2)</option>
+                <option value="-1">Levy (-1)</option>
+                <option value="1">Veteran (+1)</option>
+                <option value="2">Elite (+2)</option>
+                <option value="3">Noble (+3)</option>
+            </select>
+        </div>
+        <div>
+            <label>Missile Training Quality:</label>
+            <select id="missile-training">
+                <option value="0">Regular (0)</option>
+                <option value="-3">Penal (-3)</option>
+                <option value="-2">Peasant (-2)</option>
+                <option value="-1">Levy (-1)</option>
+                <option value="1">Veteran (+1)</option>
+                <option value="2">Elite (+2)</option>
+                <option value="3">Noble (+3)</option>
+            </select>
+        </div>
+        <div>
+            <label>Armor:</label>
+            <select id="armor">
+                <option value="0" data-ac="9">Clothing only (AC 9)</option>
+                <option value="100" data-ac="8">Shield only (AC 8, 100 gold)</option>
+                <option value="200" data-ac="7">Leather (AC 7, 200 gold)</option>
+                <option value="300" data-ac="6">Leather & shield (AC 6, 300 gold)</option>
+                <option value="400" data-ac="5">Chainmail (AC 5, 400 gold)</option>
+                <option value="500" data-ac="4">Chainmail & shield (AC 4, 500 gold)</option>
+                <option value="600" data-ac="3">Platemail (AC 3, 600 gold)</option>
+                <option value="700" data-ac="2">Platemail & shield (AC 2, 700 gold)</option>
+            </select>
+        </div>
+        <div>
+            <label>Missile Weapons:</label><br>
+            <input type="checkbox" id="crossbow" value="400"> Crossbow (400 gold)<br>
+            <input type="checkbox" id="longbow" value="450"> Long bow (450 gold)<br>
+            <input type="checkbox" id="shortbow" value="300"> Short bow (300 gold)<br>
+            <input type="checkbox" id="sling" value="20"> Sling (20 gold)<br>
+            <input type="checkbox" id="javelin" value="10"> Javelin (10 gold)<br>
+        </div>
+        <div>
+            <label>Melee Weapons:</label><br>
+            <input type="checkbox" id="dagger" value="30"> Dagger (30 gold)<br>
+            <input type="checkbox" id="club" value="30"> Club (30 gold)<br>
+            <input type="checkbox" id="handaxe" value="40"> Hand axe (40 gold)<br>
+            <input type="checkbox" id="lance" value="40"> Lance (40 gold)<br>
+            <input type="checkbox" id="mace" value="50"> Mace (50 gold)<br>
+            <input type="checkbox" id="shortsword" value="70"> Short Sword (70 gold)<br>
+            <input type="checkbox" id="spear" value="30"> Spear (30 gold)<br>
+            <input type="checkbox" id="warhammer" value="50"> Warhammer (50 gold)<br>
+            <input type="checkbox" id="battleaxe" value="70"> Battleaxe (70 gold)<br>
+            <input type="checkbox" id="sword" value="100"> Sword (100 gold)<br>
+            <input type="checkbox" id="polearm" value="70"> Pole-arm (70 gold)<br>
+            <input type="checkbox" id="longsword" value="150"> Long Sword (150 gold)<br>
+        </div>
+        <div class="total-cost">
+            Total Cost: <span id="total-cost">0</span> gold
+        </div>
+    </div>
+
+    <script>
+        const unitSelect = document.getElementById('unit');
+        const meleeTrainingSelect = document.getElementById('melee-training');
+        const missileTrainingSelect = document.getElementById('missile-training');
+        const armorSelect = document.getElementById('armor');
+        const missileWeaponCheckboxes = document.querySelectorAll('input[type="checkbox"][id^="crossbow"], input[type="checkbox"][id^="longbow"], input[type="checkbox"][id^="shortbow"], input[type="checkbox"][id^="sling"], input[type="checkbox"][id^="javelin"]');
+        const meleeWeaponCheckboxes = document.querySelectorAll('input[type="checkbox"][id^="dagger"], input[type="checkbox"][id^="club"], input[type="checkbox"][id^="handaxe"], input[type="checkbox"][id^="lance"], input[type="checkbox"][id^="mace"], input[type="checkbox"][id^="shortsword"], input[type="checkbox"][id^="spear"], input[type="checkbox"][id^="warhammer"], input[type="checkbox"][id^="battleaxe"], input[type="checkbox"][id^="sword"], input[type="checkbox"][id^="polearm"], input[type="checkbox"][id^="longsword"]');
+        const totalCostSpan = document.getElementById('total-cost');
+
+        function calculateTotalCost() {
+            let totalCost = parseInt(unitSelect.value);
+            
+            // Calculate training costs
+            const meleeTrainingModifier = parseInt(meleeTrainingSelect.value);
+            const missileTrainingModifier = parseInt(missileTrainingSelect.value);
+            totalCost += meleeTrainingModifier * 10 + missileTrainingModifier * 10;
+            
+            // Calculate armor cost
+            totalCost += parseInt(armorSelect.value);
+            
+            // Calculate missile weapon costs
+            missileWeaponCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    totalCost += parseInt(checkbox.value);
+                }
+            });
+
+            // Calculate melee weapon costs
+            meleeWeaponCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    totalCost += parseInt(checkbox.value);
+                }
+            });
+
+            // Update total cost display
+            totalCostSpan.textContent = totalCost;
+        }
+
+        unitSelect.addEventListener('change', calculateTotalCost);
+        meleeTrainingSelect.addEventListener('change', calculateTotalCost);
+        missileTrainingSelect.addEventListener('change', calculateTotalCost);
+        armorSelect.addEventListener('change', calculateTotalCost);
+        missileWeaponCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', calculateTotalCost);
+        });
+        meleeWeaponCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', calculateTotalCost);
+        });
+
+        // Initial calculation
+        calculateTotalCost();
+    </script>
+</body>
+</html>
