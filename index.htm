@@ -67,11 +67,11 @@
         <div>
             <label for="unit">Unit:</label>
             <select id="unit">
-                <option value="100" data-name="Human" data-mr="8" data-save="4">Human (100 🪙, Save: 4)</option>
-                <option value="150" data-name="Elf" data-mr="8" data-save="4">Elf (150 🪙, Save: 4)</option>
-                <option value="250" data-name="Dwarf" data-mr="8" data-save="3">Dwarf (250 🪙, Save: 3)</option>
-                <option value="150" data-name="Orc" data-mr="6" data-save="4">Orc (150 🪙, Save: 4)</option>
-                <option value="80" data-name="Goblin" data-mr="7" data-save="5">Goblin (80 🪙, Save: 5)</option>
+                <option value="100" data-name="Human" data-mr="8" data-save="4">Human (100 ¢, MR:8, SV:4)</option>
+                <option value="150" data-name="Elf" data-mr="8" data-save="4">Elf (150 ¢, MR:8, SV:4)</option>
+                <option value="250" data-name="Dwarf" data-mr="8" data-save="3">Dwarf (250 ¢, MR:8, SV:3)</option>
+                <option value="150" data-name="Orc" data-mr="6" data-save="4">Orc (150 ¢, MR:6, SV:4)</option>
+                <option value="80" data-name="Goblin" data-mr="7" data-save="5">Goblin (80 ¢, MR:7, SV:5)</option>
             </select>
         </div>
         <div>
@@ -101,40 +101,44 @@
         <div>
             <label>Armor:</label>
             <select id="armor">
-                <option value="0" data-ac="9" data-mv="12">Clothing only (AC 9, MV 12)</option>
-                <option value="100" data-ac="8" data-mv="12">Shield only (AC 8, MV 12, 100 🪙)</option>
-                <option value="200" data-ac="7" data-mv="9">Leather (AC 7, MV 9, 200 🪙)</option>
-                <option value="300" data-ac="6" data-mv="9">Leather & shield (AC 6, MV 9, 300 🪙)</option>
-                <option value="400" data-ac="5" data-mv="6">Chainmail (AC 5, MV 6, 400 🪙)</option>
-                <option value="500" data-ac="4" data-mv="6">Chainmail & shield (AC 4, MV 6, 500 🪙)</option>
-                <option value="600" data-ac="3" data-mv="6">Platemail (AC 3, MV 6, 600 🪙)</option>
-                <option value="700" data-ac="2" data-mv="6">Platemail & shield (AC 2, MV 6, 700 🪙)</option>
+                <option value="0" data-ac="9" data-mv="12">Clothing only (AC:9[10+], MV:12)</option>
+                <option value="100" data-ac="8" data-mv="12">Shield only (AC:8[11+], MV:12, 100 ¢)</option>
+                <option value="200" data-ac="7" data-mv="9">Leather (AC:7(12+], MV:9, 200 ¢)</option>
+                <option value="300" data-ac="6" data-mv="9">Leather & shield (AC:6[13+], MV 9, 300 ¢)</option>
+                <option value="400" data-ac="5" data-mv="6">Chainmail (AC:5[14+], MV:6, 400 ¢)</option>
+                <option value="500" data-ac="4" data-mv="6">Chainmail & shield (AC:4[15+], MV:6, 500 ¢)</option>
+                <option value="600" data-ac="3" data-mv="6">Platemail (AC:3[16+], MV 6, 600 ¢)</option>
+                <option value="700" data-ac="2" data-mv="6">Platemail & shield (AC:2[1+7], MV:6, 700 ¢)</option>
             </select>
         </div>
         <div>
             <label>Missile Weapons:</label><br>
-            <input type="checkbox" id="crossbow" value="400"> Crossbow, d6 (400 🪙)<br>
-            <input type="checkbox" id="longbow" value="450"> Long bow, d6 (450 🪙)<br>
-            <input type="checkbox" id="shortbow" value="300"> Short bow, d6 (300 🪙)<br>
-            <input type="checkbox" id="sling" value="20"> Sling, d4 (20 🪙)<br>
-            <input type="checkbox" id="javelin" value="10"> Javelin, d4 (10 🪙)<br>
+            <input type="checkbox" id="crossbow" value="400"> Crossbow, d6 (400 ¢)<br>
+            <input type="checkbox" id="longbow" value="450"> Long bow, d6 (450 ¢)<br>
+            <input type="checkbox" id="shortbow" value="300"> Short bow, d6 (300 ¢)<br>
+            <input type="checkbox" id="sling" value="20"> Sling, d4 (20 ¢)<br>
+            <input type="checkbox" id="javelin" value="10"> Javelin, d4 (10 ¢)<br>
         </div>
         <div>
             <label>Melee Weapons:</label><br>
-            <input type="checkbox" id="club" value="30"> Club, d4 (30 🪙)<br>
-            <input type="checkbox" id="handaxe" value="40"> Hand axe, d6 (40 🪙)<br>
-            <input type="checkbox" id="lance" value="40"> Lance, d6 (40 🪙)<br>
-            <input type="checkbox" id="mace" value="50"> Mace, d6 (50 🪙)<br>
-            <input type="checkbox" id="shortsword" value="70"> Short Sword, d6 (70 🪙)<br>
-            <input type="checkbox" id="spear" value="30"> Spear, d6 (30 🪙)<br>
-            <input type="checkbox" id="warhammer" value="50"> Warhammer, d6 (50 🪙)<br>
-            <input type="checkbox" id="battleaxe" value="70"> Battleaxe, d8 (70 🪙)<br>
-            <input type="checkbox" id="sword" value="100"> Sword, d8 (100 🪙)<br>
-            <input type="checkbox" id="polearm" value="70"> Pole-arm, d10 (70 🪙)<br>
-            <input type="checkbox" id="longsword" value="150"> Long Sword, d10 (150 🪙)<br>
+            <input type="checkbox" id="club" value="30"> Club, d4 (30 ¢)<br>
+            <input type="checkbox" id="handaxe" value="40"> Hand axe, d6 (40 ¢)<br>
+            <input type="checkbox" id="lance" value="40"> Lance, d6 (40 ¢)<br>
+            <input type="checkbox" id="mace" value="50"> Mace, d6 (50 ¢)<br>
+            <input type="checkbox" id="shortsword" value="70"> Short Sword, d6 (70 ¢)<br>
+            <input type="checkbox" id="spear" value="30"> Spear, d6 (30 ¢)<br>
+            <input type="checkbox" id="warhammer" value="50"> Warhammer, d6 (50 ¢)<br>
+            <input type="checkbox" id="battleaxe" value="70"> Battleaxe, d8 (70 ¢)<br>
+            <input type="checkbox" id="sword" value="100"> Sword, d8 (100 ¢)<br>
+            <input type="checkbox" id="polearm" value="70"> Pole-arm, d10 (70 ¢)<br>
+            <input type="checkbox" id="longsword" value="150"> Long Sword, d10 (150 ¢)<br>
+        </div>
+        <div>
+            <input type="checkbox" id="sergeant" value="sergeant"> Add Leader (sergeant, musician, standard bearer etc.) (half unit's base cost) <br>
+			<i>causes elves, dwarves, orcs and goblins  receive +2 to morale</i><br>
         </div>
         <div class="total-cost">
-            Total Cost: <span id="total-cost">0</span> 🪙
+            Total Cost: <span id="total-cost">0</span> ¢
         </div>
         <button id="add-to-roster">Add to Roster</button>
     </div>
@@ -153,6 +157,7 @@
                     <th>MR</th>
                     <th>SV</th>
                     <th>Cost</th>
+                    <th>Leader</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -160,7 +165,7 @@
             </tbody>
         </table>
         <div class="total-army-value">
-            Total Army Value: <span id="total-army-value">0</span> 🪙
+            Total Army Value: <span id="total-army-value">0</span> ¢
         </div>
     </div>
 
@@ -169,6 +174,7 @@
         const meleeTrainingSelect = document.getElementById('melee-training');
         const missileTrainingSelect = document.getElementById('missile-training');
         const armorSelect = document.getElementById('armor');
+        const sergeantCheckbox = document.getElementById('sergeant');
         const missileWeaponCheckboxes = document.querySelectorAll('input[type="checkbox"][id^="crossbow"], input[type="checkbox"][id^="longbow"], input[type="checkbox"][id^="shortbow"], input[type="checkbox"][id^="sling"], input[type="checkbox"][id^="javelin"]');
         const meleeWeaponCheckboxes = document.querySelectorAll('input[type="checkbox"][id^="club"], input[type="checkbox"][id^="handaxe"], input[type="checkbox"][id^="lance"], input[type="checkbox"][id^="mace"], input[type="checkbox"][id^="shortsword"], input[type="checkbox"][id^="spear"], input[type="checkbox"][id^="warhammer"], input[type="checkbox"][id^="battleaxe"], input[type="checkbox"][id^="sword"], input[type="checkbox"][id^="polearm"], input[type="checkbox"][id^="longsword"]');
         const totalCostSpan = document.getElementById('total-cost');
@@ -180,15 +186,20 @@
 
         function calculateTotalCost() {
             let totalCost = parseInt(unitSelect.value);
-            
+
+            // Calculate sergeant cost
+            if (sergeantCheckbox.checked) {
+                totalCost += Math.floor(parseInt(unitSelect.value) / 2);
+            }
+
             // Calculate training costs
             const meleeTrainingModifier = parseInt(meleeTrainingSelect.value);
             const missileTrainingModifier = parseInt(missileTrainingSelect.value);
             totalCost += meleeTrainingModifier * 10 + missileTrainingModifier * 10;
-            
+
             // Calculate armor cost
             totalCost += parseInt(armorSelect.value);
-            
+
             // Calculate missile weapon costs
             missileWeaponCheckboxes.forEach(checkbox => {
                 if (checkbox.checked) {
@@ -214,24 +225,36 @@
             const MV = armorSelect.options[armorSelect.selectedIndex].getAttribute('data-mv');
             const MS = missileTrainingSelect.value;
             const ML = meleeTrainingSelect.value;
-            const MR = unitSelect.options[unitSelect.selectedIndex].getAttribute('data-mr');
+            let MR = parseInt(unitSelect.options[unitSelect.selectedIndex].getAttribute('data-mr'));
             const SV = unitSelect.options[unitSelect.selectedIndex].getAttribute('data-save');
             const Cost = parseInt(totalCostSpan.textContent);
             const armorWorn = armorSelect.options[armorSelect.selectedIndex].textContent.split('(')[0].trim();
-            
+            const sergeantIncluded = sergeantCheckbox.checked ? "Yes" : "No";
+
+            if (sergeantCheckbox.checked) {
+                if (unitName === "Elf" || unitName === "Dwarf") {
+                    MR = 10;
+                } else if (unitName === "Orc") {
+                    MR = 8;
+                } else if (unitName === "Goblin") {
+                    MR = 9;
+                }
+            }
+
             let missileWeapons = [];
             missileWeaponCheckboxes.forEach(checkbox => {
                 if (checkbox.checked) {
                     missileWeapons.push(checkbox.nextSibling.textContent.trim());
                 }
             });
-            
+
             let meleeWeapons = ["Dagger, d4"];
             meleeWeaponCheckboxes.forEach(checkbox => {
                 if (checkbox.checked) {
                     meleeWeapons.push(checkbox.nextSibling.textContent.trim());
                 }
             });
+
 
             const newRow = document.createElement('tr');
             newRow.innerHTML = `
@@ -244,12 +267,13 @@
                 <td>${MR}</td>
                 <td>${SV}</td>
                 <td>${Cost}</td>
+                <td>${sergeantIncluded}</td>
                 <td><span class="remove-button">Remove</span></td>
             `;
             const detailsRow = document.createElement('tr');
             detailsRow.classList.add('unit-details');
             detailsRow.innerHTML = `
-                <td colspan="10">Armor: ${armorWorn}<br>Missile: ${missileWeapons.join(', ')}<br>Melee: ${meleeWeapons.join(', ')}</td>
+                <td colspan="11">${armorWorn}, ${missileWeapons.join(', ')}, ${meleeWeapons.join(', ')}</td>
             `;
 
             rosterBody.appendChild(newRow);
@@ -270,6 +294,7 @@
         meleeTrainingSelect.addEventListener('change', calculateTotalCost);
         missileTrainingSelect.addEventListener('change', calculateTotalCost);
         armorSelect.addEventListener('change', calculateTotalCost);
+        sergeantCheckbox.addEventListener('change', calculateTotalCost);
         missileWeaponCheckboxes.forEach(checkbox => {
             checkbox.addEventListener('change', calculateTotalCost);
         });
